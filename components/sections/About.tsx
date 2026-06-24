@@ -42,7 +42,7 @@ export function About() {
               &ldquo;
             </span>
 
-            <blockquote className="relative max-w-4xl text-[clamp(1.65rem,3.4vw,2.35rem)] font-semibold leading-tight tracking-tight text-text-primary">
+            <blockquote className="relative max-w-4xl text-[clamp(1.65rem,3.4vw,2.35rem)] font-semibold leading-tight max-md:tracking-tight md:tracking-normal text-text-primary">
               {t("quote")}
             </blockquote>
 

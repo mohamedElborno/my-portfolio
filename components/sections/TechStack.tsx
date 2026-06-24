@@ -15,7 +15,7 @@ export function TechStack() {
       <div className="mx-auto max-w-5xl">
         <Reveal direction="up" className="mb-12">
           <span className="section-label mb-4 block">{t("label")}</span>
-          <h2 className="text-[2.2rem] font-medium tracking-tight text-text-primary">
+          <h2 className="text-[2.2rem] font-medium max-md:tracking-tight md:tracking-normal text-text-primary">
             {t("headline")}
             <br />
             <span className="text-gradient">{t("headlineAccent")}</span>

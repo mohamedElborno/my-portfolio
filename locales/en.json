@@ -31,7 +31,7 @@
   },
   "hero": {
     "headline": "Architecting resilient systems that power your business.",
-    "subheadline": "Full Stack Engineer specializing in ERP, SaaS, and AI solutions. Translating complex business requirements into scalable, production-ready architectures—managing the complete product lifecycle from inception to deployment.",
+    "subheadline": "Full Stack Engineer specializing in ERP, SaaS, and AI solutions. Translating complex business requirements into scalable, production-ready architectures managing the complete product lifecycle from inception to deployment.",
     "ctaWork": "View My Work",
     "ctaContact": "Get in Touch",
     "builtWith": "Built with",
@@ -47,7 +47,7 @@
     "role": "Product-Focused Full Stack Engineer | Erzurum, Turkey",
     "quote": "The primary goal of software engineering is to build rigorous business logic that prevents data discrepancies and aligns perfectly with real-world operations.",
     "p1": "Based in Erzurum, Turkey, my practical experience lies in building custom business operations solutions. This includes engineering sales and invoicing engines that handle millions of SAR in monthly transaction flows while automatically integrating them with accounting journals, alongside real-time AI processing pipelines operating across 7 different languages.",
-    "p2": "My expertise covers developing core ERP and supply chain modules, such as sales and procurement lifecycles, warehouse movement management, and building SaaS architectures. I take technical ownership of the product lifecycle—from designing APIs and database schemas to frontend development and production deployment.",
+    "p2": "My expertise covers developing core ERP and supply chain modules, such as sales and procurement lifecycles, warehouse movement management, and building SaaS architectures. I take technical ownership of the product lifecycle from designing APIs and database schemas to frontend development and production deployment.",
     "p3": "Whether the challenge involves engineering intermediary credit ledgers to track balances and debit/credit movements with clear reference paths, or designing logistics workflows that handle stock validation and reservation prior to actual deduction; my ultimate goal is to bridge the gap between real business needs and deployed technical solutions."
   },
   "services": {
@@ -76,7 +76,7 @@
       },
       "ai": {
         "title": "Applied AI Integration",
-        "description": "Deploying production-grade AI systems using cost-optimized LLMs for multilingual sentiment analysis, churn risk forecasting, and behavioral intelligence—structured tailored to SaaS unit economics rather than basic proofs of concept.",
+        "description": "Deploying production-grade AI systems using cost-optimized LLMs for multilingual sentiment analysis, churn risk forecasting, and behavioral intelligence structured tailored to SaaS unit economics rather than basic proofs of concept.",
         "tags": ["GPT-5 Mini", "Multilingual Processing", "Cost-Aware AI"]
       },
       "saas": {

@@ -280,7 +280,7 @@ function ProjectBlock({
           <span className="font-mono text-[11px] font-semibold tracking-widest text-accent">
             {String(index + 1).padStart(2, "0")}
           </span>
-          <h3 className="text-[1.15rem] font-semibold tracking-tight text-text-primary">
+          <h3 className="text-[1.15rem] font-semibold max-md:tracking-tight md:tracking-normal text-text-primary">
             {t(`items.${studyKey}.title`)}
           </h3>
           <span className="hidden h-3.5 w-px bg-border-default sm:block" />
@@ -583,7 +583,7 @@ export function CaseStudies() {
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <span className="section-label mb-4 block">{t("label")}</span>
-          <h2 className="text-[2.2rem] font-medium tracking-tight text-primary">
+          <h2 className="text-[2.2rem] font-medium max-md:tracking-tight md:tracking-normal text-primary">
             {t("headline")}
             <br />
             <span className="text-gradient">{t("headlineAccent")}</span>

@@ -79,14 +79,21 @@ export function Hero() {
           </motion.div>
 
           {/* headline */}
-          <h1 className="mb-4 text-[clamp(2.4rem,5.4vw,3.9rem)] font-bold leading-[1.1] tracking-[-0.035em] text-text-primary">
+          <h1
+            className={cn(
+              "mb-4 text-[clamp(2.4rem,5.4vw,3.9rem)] font-bold leading-[1.1] text-text-primary",
+              "tracking-[-0.035em] md:tracking-normal",
+            )}
+          >
             <span className="block md:hidden">{headline1}</span>
             <motion.span {...enter(32, 0.2)} className="hidden md:block">
               {headline1}
             </motion.span>
             {headline2 && (
               <>
-                <span className="block text-gradient md:hidden">{headline2}</span>
+                <span className="block text-gradient md:hidden">
+                  {headline2}
+                </span>
                 <motion.span
                   {...enter(32, 0.3)}
                   className="hidden md:block text-gradient"
