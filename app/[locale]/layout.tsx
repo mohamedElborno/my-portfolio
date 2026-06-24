@@ -10,39 +10,6 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { Providers } from "@/components/Providers";
 import { CursorGlow } from "@/components/ui/CursorGlow";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
-import localFont from "next/font/local";
-
-const thmanyahSans = localFont({
-  src: [
-    {
-      path: "../../public/fonts/thmanyahsans-Light.otf",
-      weight: "300",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/thmanyahsans-Regular.otf",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/thmanyahsans-Medium.otf",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/thmanyahsans-Bold.otf",
-      weight: "700",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/thmanyahsans-Black.otf",
-      weight: "900",
-      style: "normal",
-    },
-  ],
-  variable: "--font-thmanyah",
-  display: "swap",
-});
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -81,7 +48,9 @@ export async function generateMetadata({
       locale: openGraphLocale,
       alternateLocale: routing.locales
         .filter((loc) => loc !== locale)
-        .map((loc) => (loc === "ar" ? "ar_SA" : loc === "tr" ? "tr_TR" : "en_US")),
+        .map((loc) =>
+          loc === "ar" ? "ar_SA" : loc === "tr" ? "tr_TR" : "en_US",
+        ),
       url: pageUrl,
       siteName: t("siteName"),
       title: t("title"),
@@ -115,14 +84,14 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       dir={dir}
-      className={`${thmanyahSans.variable} h-full overflow-x-clip antialiased`}
+      className={`h-full overflow-x-clip antialiased`}
       suppressHydrationWarning
     >
-      <body className="flex min-h-dvh w-full flex-col overflow-x-clip bg-bg-primary text-text-primary font-thmanyah">
+      <body className="flex min-h-dvh w-full flex-col overflow-x-clip bg-bg-primary text-text-primary">
         {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
           <Script
             src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
-            strategy="afterInteractive"
+            strategy="lazyOnload"
           />
         )}
         <Providers>
