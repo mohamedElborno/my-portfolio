@@ -22,7 +22,7 @@ export default function HomePage() {
   return (
     <>
       <Navbar />
-      <main className="relative z-10 flex-1">
+      <main className="relative z-10 w-full min-w-0 flex-1">
         <Hero />
         <SectionDivider />
         <About />

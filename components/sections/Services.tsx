@@ -40,7 +40,7 @@ function ErpVisual() {
   const locale = useLocale();
   return (
     <div
-      className="flex items-center gap-1.5 pb-0.5 cursor-default overflow-x-auto"
+      className="flex min-w-0 max-w-full items-center gap-1.5 overflow-x-auto pb-0.5 cursor-default overscroll-x-contain"
       dir={locale === "ar" ? "rtl" : "ltr"}
     >
       {steps.map((step, i) => (
@@ -347,7 +347,7 @@ function ServiceCard({
     <motion.div
       ref={ref}
       className={[
-        "card-base group relative flex h-full cursor-default flex-col p-6 will-change-transform",
+        "card-base group relative flex h-full min-w-0 cursor-default flex-col overflow-hidden p-6 will-change-transform",
         isLarge ? "lg:col-span-2" : "",
       ]
         .filter(Boolean)
@@ -424,7 +424,7 @@ function ServiceCard({
 
       {/* mini visual — large cards only */}
       {isLarge && (
-        <div className="relative z-10 mb-5 flex-1 border-t border-border-subtle pt-4">
+        <div className="relative z-10 mb-5 min-w-0 flex-1 border-t border-border-subtle pt-4">
           {serviceKey === "erp" && <ErpVisual />}
           {serviceKey === "saas" && <SaasVisual />}
           {serviceKey === "database" && <DatabaseVisual />}

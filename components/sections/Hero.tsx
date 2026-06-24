@@ -67,7 +67,7 @@ export function Hero() {
     >
       <GridBackground />
 
-      <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-12 px-6 lg:grid-cols-2 lg:gap-16">
+      <div className="relative z-10 mx-auto grid w-full min-w-0 max-w-6xl items-center gap-12 px-6 lg:grid-cols-2 lg:gap-16">
         {/* ── Left: copy ─────────────────────────────────────── */}
         <div>
           {/* availability badge */}

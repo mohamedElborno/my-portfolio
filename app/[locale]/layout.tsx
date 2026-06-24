@@ -115,10 +115,10 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       dir={dir}
-      className={`${thmanyahSans.variable} h-full antialiased`}
+      className={`${thmanyahSans.variable} h-full overflow-x-clip antialiased`}
       suppressHydrationWarning
     >
-      <body className="flex min-h-full flex-col bg-primary text-primary font-thmanyah">
+      <body className="flex min-h-dvh w-full flex-col overflow-x-clip bg-bg-primary text-text-primary font-thmanyah">
         {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
           <Script
             src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
@@ -127,9 +127,11 @@ export default async function LocaleLayout({
         )}
         <Providers>
           <NextIntlClientProvider locale={locale} messages={messages}>
-            <ScrollProgress />
-            <CursorGlow />
-            {children}
+            <div className="flex min-h-dvh w-full min-w-0 flex-col overflow-x-clip">
+              <ScrollProgress />
+              <CursorGlow />
+              {children}
+            </div>
           </NextIntlClientProvider>
         </Providers>
       </body>

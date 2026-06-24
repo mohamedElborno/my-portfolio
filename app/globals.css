@@ -109,12 +109,14 @@
   html {
     background-color: var(--bg-primary);
     scroll-behavior: smooth;
+    overflow-x: clip;
   }
 
   body {
     background-color: var(--bg-primary);
     color: var(--text-primary);
-    overflow-x: hidden;
+    overflow-x: clip;
+    max-width: 100%;
   }
 
   ::selection {

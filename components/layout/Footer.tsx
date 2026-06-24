@@ -17,9 +17,9 @@ export function Footer() {
   const contact = useTranslations("contact");
 
   return (
-    <footer className="relative z-10 border-t border-border-subtle">
-      <div className="mx-auto flex max-w-5xl flex-col gap-8 px-6 py-10 md:flex-row md:items-center md:justify-between">
-        <p className=" text-[13px] text-text-tertiary">{t("tagline")}</p>
+    <footer className="relative z-10 mt-12 w-full min-w-0 border-t border-border-subtle bg-bg-primary sm:mt-16">
+      <div className="mx-auto flex max-w-5xl flex-col gap-8 px-6 py-12 md:flex-row md:items-center md:justify-between md:py-10">
+        <p className="text-[13px] leading-relaxed text-text-tertiary">{t("tagline")}</p>
 
         <nav className="flex flex-wrap gap-6" aria-label="Footer">
           {navLinks.map((link) => (

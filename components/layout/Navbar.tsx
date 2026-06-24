@@ -124,11 +124,14 @@ function LocaleDropdown({
 
 export function Navbar() {
   const t = useTranslations("nav");
+  const locale = useLocale();
+  const isRtl = locale === "ar";
   const reduce = useReducedMotion();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("");
   const [hovered, setHovered] = useState<string | null>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -138,9 +141,35 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
+    if (!menuOpen) return;
+
+    const html = document.documentElement;
+    const body = document.body;
+    const prevHtmlOverflow = html.style.overflow;
+    const prevBodyOverflow = body.style.overflow;
+    const prevBodyOverscroll = body.style.overscrollBehavior;
+
+    html.style.overflow = "hidden";
+    body.style.overflow = "hidden";
+    body.style.overscrollBehavior = "none";
+
+    const blockBackgroundScroll = (event: TouchEvent) => {
+      const menu = mobileMenuRef.current;
+      if (menu && event.target instanceof Node && menu.contains(event.target)) {
+        return;
+      }
+      event.preventDefault();
+    };
+
+    document.addEventListener("touchmove", blockBackgroundScroll, {
+      passive: false,
+    });
+
     return () => {
-      document.body.style.overflow = "";
+      html.style.overflow = prevHtmlOverflow;
+      body.style.overflow = prevBodyOverflow;
+      body.style.overscrollBehavior = prevBodyOverscroll;
+      document.removeEventListener("touchmove", blockBackgroundScroll);
     };
   }, [menuOpen]);
 
@@ -178,13 +207,21 @@ export function Navbar() {
     >
       <div
         className={cn(
-          "mx-auto flex items-center justify-between gap-3 transition-all duration-300 ease-out",
+          "relative z-60 mx-auto flex items-center justify-between gap-3 transition-all duration-300 ease-out",
           scrolled
             ? "mt-3 max-w-4xl rounded-2xl border border-border-default bg-bg-secondary/70 px-3 py-2 shadow-elevated backdrop-blur-xl"
             : "mt-0 max-w-6xl border border-transparent px-2 py-4",
+          menuOpen &&
+            "max-md:mt-0 max-md:max-w-none max-md:justify-end max-md:border-transparent max-md:bg-transparent max-md:px-4 max-md:py-4 max-md:shadow-none max-md:backdrop-blur-none",
         )}
       >
-        <a href="#hero" className="group flex items-center gap-2.5">
+        <a
+          href="#hero"
+          className={cn(
+            "group flex items-center gap-2.5",
+            menuOpen && "max-md:hidden",
+          )}
+        >
           <div
             className="flex h-9 w-9 items-center justify-center rounded-xl shadow-accent-sm transition-transform duration-200 group-hover:scale-105"
             style={{ background: "var(--accent-gradient)" }}
@@ -236,9 +273,11 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <LocaleDropdown className="hidden sm:block" />
+          <LocaleDropdown
+            className={cn("hidden sm:block", menuOpen && "max-md:hidden")}
+          />
 
-          <ThemeToggle />
+          <ThemeToggle className={cn(menuOpen && "max-md:hidden")} />
 
           <motion.a
             href="#contact"
@@ -251,8 +290,11 @@ export function Navbar() {
 
           <button
             type="button"
-            className="flex h-9 w-9 items-center justify-center rounded-lg border border-border-default bg-bg-tertiary text-text-primary transition-colors hover:border-accent hover:text-accent md:hidden"
-            onClick={() => setMenuOpen(!menuOpen)}
+            className={cn(
+              "relative z-60 flex h-9 w-9 items-center justify-center rounded-lg border border-border-default bg-bg-tertiary text-text-primary transition-colors hover:border-accent hover:text-accent md:hidden",
+              menuOpen && "border-accent text-accent",
+            )}
+            onClick={() => setMenuOpen((open) => !open)}
             aria-label={menuOpen ? t("menuClose") : t("menuOpen")}
             aria-expanded={menuOpen}
           >
@@ -268,51 +310,58 @@ export function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: reduce ? 0 : 0.2 }}
-            className="fixed inset-0 top-0 z-40 flex flex-col bg-bg-primary/95 px-8 pt-28 backdrop-blur-xl md:hidden"
+            className="fixed inset-0 z-40 flex flex-col overflow-hidden overscroll-none bg-bg-primary/95 backdrop-blur-xl md:hidden"
           >
-            <motion.nav
-              className="flex flex-col gap-2"
-              aria-label="Mobile"
-              initial="hidden"
-              animate="visible"
-              variants={{
-                hidden: {},
-                visible: { transition: { staggerChildren: reduce ? 0 : 0.06 } },
-              }}
+            <div
+              ref={mobileMenuRef}
+              className="flex flex-1 flex-col overflow-y-auto overscroll-contain px-6 pb-8 pt-20 sm:px-8"
             >
-              {navLinks.map((link) => (
-                <motion.a
-                  key={link.key}
-                  href={link.href}
-                  onClick={() => setMenuOpen(false)}
-                  variants={{
-                    hidden: reduce ? { opacity: 0 } : { opacity: 0, x: -16 },
-                    visible: { opacity: 1, x: 0 },
-                  }}
-                  className={cn(
-                    "border-b border-border-subtle py-4 text-3xl font-semibold transition-colors",
-                    activeSection === link.id
-                      ? "text-accent"
-                      : "text-text-primary",
-                  )}
-                >
-                  {t(link.key)}
-                </motion.a>
-              ))}
-            </motion.nav>
+              <motion.nav
+                className="flex flex-col gap-2"
+                aria-label="Mobile"
+                initial="hidden"
+                animate="visible"
+                variants={{
+                  hidden: {},
+                  visible: { transition: { staggerChildren: reduce ? 0 : 0.06 } },
+                }}
+              >
+                {navLinks.map((link) => (
+                  <motion.a
+                    key={link.key}
+                    href={link.href}
+                    onClick={() => setMenuOpen(false)}
+                    variants={{
+                      hidden: reduce
+                        ? { opacity: 0 }
+                        : { opacity: 0, x: isRtl ? 16 : -16 },
+                      visible: { opacity: 1, x: 0 },
+                    }}
+                    className={cn(
+                      "wrap-break-word border-b border-border-subtle py-4 text-2xl font-semibold transition-colors sm:text-3xl",
+                      activeSection === link.id
+                        ? "text-accent"
+                        : "text-text-primary",
+                    )}
+                  >
+                    {t(link.key)}
+                  </motion.a>
+                ))}
+              </motion.nav>
 
-            <div className="mt-8 flex items-center justify-between gap-4">
-              <LocaleDropdown onSelect={() => setMenuOpen(false)} />
-              <ThemeToggle />
+              <div className="mt-8 flex items-center justify-between gap-4">
+                <LocaleDropdown onSelect={() => setMenuOpen(false)} />
+                <ThemeToggle />
+              </div>
+
+              <a
+                href="#contact"
+                onClick={() => setMenuOpen(false)}
+                className="btn-primary mt-6 justify-center py-3 text-base"
+              >
+                {t("contact")}
+              </a>
             </div>
-
-            <a
-              href="#contact"
-              onClick={() => setMenuOpen(false)}
-              className="btn-primary mt-6 justify-center py-3 text-base"
-            >
-              {t("contact")}
-            </a>
           </motion.div>
         )}
       </AnimatePresence>
