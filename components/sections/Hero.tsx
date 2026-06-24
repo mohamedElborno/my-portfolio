@@ -63,15 +63,15 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen items-center overflow-hidden pt-28 pb-16"
+      className="relative flex min-h-screen items-center overflow-hidden pt-28 pb-16 px-6"
     >
       <GridBackground />
 
-      <div className="relative z-10 mx-auto grid w-full min-w-0 max-w-6xl items-center gap-12 px-6 lg:grid-cols-2 lg:gap-16">
+      <div className="relative z-10 mx-auto grid w-full min-w-0 max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
         {/* ── Left: copy ─────────────────────────────────────── */}
-        <div>
+        <div className="px-0">
           {/* availability badge */}
-          <motion.div {...enter(8, 0.1)} className="mb-7 inline-flex">
+          <motion.div {...enter(8, 0.1)} className="mb-7 inline-flex px-0">
             <span className="tag-pill-accent">
               <span className="glow-dot" />
               {nav("title")}
@@ -105,7 +105,7 @@ export function Hero() {
           </h1>
 
           {/* subheadline */}
-          <p className="mb-9 max-w-lg text-[clamp(0.975rem,1.5vw,1.1rem)] leading-relaxed text-secondary md:hidden">
+          <p className="mb-9 px-0 max-w-lg text-[clamp(0.975rem,1.5vw,1.1rem)] leading-relaxed text-secondary md:hidden">
             {t("subheadline")}
           </p>
           <motion.p

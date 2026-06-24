@@ -237,7 +237,7 @@ export function Navbar() {
           "relative z-60 mx-auto flex items-center justify-between gap-3 transition-all duration-300 ease-out",
           scrolled
             ? "mt-3 max-w-4xl rounded-2xl border border-border-default bg-bg-secondary/70 px-3 py-2 shadow-elevated backdrop-blur-xl"
-            : "mt-0 max-w-6xl border border-transparent px-2 py-4",
+            : "mt-0 max-w-6xl border border-transparent px-0 py-4",
           menuOpen &&
             "max-md:mt-0 max-md:max-w-none max-md:justify-end max-md:border-transparent max-md:bg-transparent max-md:px-4 max-md:py-4 max-md:shadow-none max-md:backdrop-blur-none",
         )}
@@ -350,7 +350,9 @@ export function Navbar() {
                 animate="visible"
                 variants={{
                   hidden: {},
-                  visible: { transition: { staggerChildren: reduce ? 0 : 0.06 } },
+                  visible: {
+                    transition: { staggerChildren: reduce ? 0 : 0.06 },
+                  },
                 }}
               >
                 {navLinks.map((link) => (
