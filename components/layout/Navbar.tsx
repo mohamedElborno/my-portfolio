@@ -36,8 +36,7 @@ function LocaleDropdown({
   const locale = useLocale() as Locale;
   const pathname = usePathname();
   const reduce = useReducedMotion();
-  const isRtl = locale === "ar";
-  const resolvedAlign = align ?? (isRtl ? "start" : "end");
+  const resolvedAlign = align ?? "end";
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -381,7 +380,7 @@ export function Navbar() {
             <div className="shrink-0 px-6 pb-8 pt-4 sm:px-8">
               <div className="flex items-center justify-between gap-4">
                 <LocaleDropdown
-                  align={isRtl ? "end" : "start"}
+                  align="start"
                   placement="above"
                   onSelect={() => setMenuOpen(false)}
                 />
