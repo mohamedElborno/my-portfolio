@@ -12,7 +12,13 @@
     "stack": "Tech Stack",
     "contact": "Contact",
     "menuOpen": "Open Menu",
-    "menuClose": "Close Menu"
+    "menuClose": "Close Menu",
+    "language": "Language",
+    "locales": {
+      "en": "English",
+      "ar": "العربية",
+      "tr": "Türkçe"
+    }
   },
   "theme": {
     "switchToDark": "Switch to Dark Mode",
@@ -237,7 +243,8 @@
       "2000to5000": "$2,000 to $5,000",
       "over5000": "Over $5,000",
       "discuss": "I'd prefer to discuss first"
-    }
+    },
+    "recaptchaNotice": "This site is protected by reCAPTCHA and the Google <privacy>Privacy Policy</privacy> and <terms>Terms of Service</terms> apply."
   },
   "footer": {
     "tagline": "Mohamed Elborno . Product-Focused Full Stack Engineer",

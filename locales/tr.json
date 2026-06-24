@@ -12,7 +12,13 @@
     "stack": "Teknolojiler",
     "contact": "İletişim",
     "menuOpen": "Menüyü Aç",
-    "menuClose": "Menüyü Kapat"
+    "menuClose": "Menüyü Kapat",
+    "language": "Dil",
+    "locales": {
+      "en": "English",
+      "ar": "العربية",
+      "tr": "Türkçe"
+    }
   },
   "theme": {
     "switchToDark": "Karanlık Moda Geç",
@@ -233,7 +239,8 @@
       "2000to5000": "2.000$ ila 5.000$",
       "over5000": "5.000 Dolar Üzeri",
       "discuss": "Önce görüşmeyi tercih ederim"
-    }
+    },
+    "recaptchaNotice": "Bu site reCAPTCHA tarafından korunmaktadır; Google <privacy>Gizlilik Politikası</privacy> ve <terms>Hizmet Şartları</terms> geçerlidir."
   },
   "footer": {
     "tagline": "Mohamed Elborno . Ürün Odaklı Full Stack Yazılım Mühendisi",

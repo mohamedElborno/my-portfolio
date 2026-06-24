@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
-import { Menu, X } from "lucide-react";
+import { Check, Globe, Menu, X } from "lucide-react";
 import { Link, usePathname } from "@/i18n/navigation";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { tapPress } from "@/lib/animations";
@@ -19,11 +19,111 @@ const navLinks = [
 ];
 
 const locales = ["en", "ar", "tr"] as const;
+type Locale = (typeof locales)[number];
+
+function LocaleDropdown({
+  onSelect,
+  className,
+}: {
+  onSelect?: () => void;
+  className?: string;
+}) {
+  const t = useTranslations("nav");
+  const locale = useLocale() as Locale;
+  const pathname = usePathname();
+  const reduce = useReducedMotion();
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const onPointerDown = (event: MouseEvent) => {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    };
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+
+    document.addEventListener("mousedown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [open]);
+
+  return (
+    <div ref={ref} className={cn("relative", className)}>
+      <motion.button
+        type="button"
+        onClick={() => setOpen((prev) => !prev)}
+        whileHover={reduce ? undefined : { y: -2 }}
+        whileTap={reduce ? undefined : tapPress}
+        aria-expanded={open}
+        aria-haspopup="listbox"
+        aria-label={t("language")}
+        className={cn(
+          "flex h-9 w-9 items-center justify-center rounded-lg border border-border-subtle text-text-secondary transition-colors hover:border-accent hover:text-accent will-change-transform",
+          open && "border-accent text-accent",
+        )}
+      >
+        <Globe size={18} aria-hidden />
+      </motion.button>
+
+      <AnimatePresence>
+        {open && (
+          <motion.ul
+            role="listbox"
+            aria-label={t("language")}
+            initial={reduce ? false : { opacity: 0, y: -6, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={reduce ? undefined : { opacity: 0, y: -6, scale: 0.98 }}
+            transition={{
+              duration: reduce ? 0 : 0.18,
+              ease: [0.21, 0.47, 0.32, 0.98],
+            }}
+            className="absolute inset-e-0 top-[calc(100%+0.375rem)] z-50 min-w-38 overflow-hidden rounded-xl border border-border-default bg-bg-secondary p-1 shadow-elevated backdrop-blur-xl space-y-1"
+          >
+            {locales.map((loc) => {
+              const isActive = locale === loc;
+              return (
+                <li key={loc} role="option" aria-selected={isActive}>
+                  <Link
+                    href={pathname}
+                    locale={loc}
+                    lang={loc}
+                    onClick={() => {
+                      setOpen(false);
+                      onSelect?.();
+                    }}
+                    className={cn(
+                      "flex items-center justify-between gap-3 rounded-lg px-3 py-2 text-[13px] transition-colors",
+                      isActive
+                        ? "bg-accent-dim font-medium text-accent"
+                        : "text-secondary duration-200 hover:bg-accent-dim hover:text-primary",
+                    )}
+                  >
+                    <span>{t(`locales.${loc}`)}</span>
+                    {isActive && (
+                      <Check size={14} aria-hidden className="shrink-0" />
+                    )}
+                  </Link>
+                </li>
+              );
+            })}
+          </motion.ul>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
 
 export function Navbar() {
   const t = useTranslations("nav");
-  const locale = useLocale();
-  const pathname = usePathname();
   const reduce = useReducedMotion();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -136,24 +236,7 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <div className="hidden items-center gap-0.5 rounded-lg border border-border-default bg-bg-tertiary p-0.5 sm:flex">
-            {locales.map((loc) => (
-              <Link
-                key={loc}
-                href={pathname}
-                locale={loc}
-                lang={loc}
-                className={cn(
-                  "rounded-md px-2.5 py-1  text-[11px] font-semibold uppercase transition-all duration-150",
-                  locale === loc
-                    ? "bg-bg-elevated text-text-primary shadow-card"
-                    : "text-text-tertiary hover:text-text-primary",
-                )}
-              >
-                {loc}
-              </Link>
-            ))}
-          </div>
+          <LocaleDropdown className="hidden sm:block" />
 
           <ThemeToggle />
 
@@ -218,24 +301,8 @@ export function Navbar() {
               ))}
             </motion.nav>
 
-            <div className="mt-8 flex items-center justify-between">
-              <div className="flex gap-2">
-                {locales.map((loc) => (
-                  <Link
-                    key={loc}
-                    href={pathname}
-                    locale={loc}
-                    lang={loc}
-                    onClick={() => setMenuOpen(false)}
-                    className={cn(
-                      "rounded-lg border border-border-default bg-bg-tertiary px-4 py-2  text-sm font-semibold uppercase",
-                      locale === loc && "border-accent text-accent",
-                    )}
-                  >
-                    {loc}
-                  </Link>
-                ))}
-              </div>
+            <div className="mt-8 flex items-center justify-between gap-4">
+              <LocaleDropdown onSelect={() => setMenuOpen(false)} />
               <ThemeToggle />
             </div>
 

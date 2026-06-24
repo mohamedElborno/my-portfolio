@@ -77,6 +77,7 @@ export function CursorGlow() {
       {/* ── Ambient bloom ───────────────────────────────────── */}
       <motion.div
         aria-hidden
+        dir="ltr"
         className="pointer-events-none fixed left-0 top-0 z-9999 rounded-full will-change-transform"
         animate={{
           scale: mode === "pointer" ? 1.15 : 1,
@@ -101,6 +102,7 @@ export function CursorGlow() {
        */}
       <motion.div
         aria-hidden
+        dir="ltr"
         className="pointer-events-none fixed left-0 top-0 z-9999 h-0 w-0"
         style={{ x: sSx, y: sSy }}
       >

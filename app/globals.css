@@ -77,6 +77,10 @@
   --shadow-elevated: var(--elevation-2);
 }
 
+.grecaptcha-badge {
+  visibility: hidden;
+}
+
 @keyframes pulseAccent {
   0%,
   100% {

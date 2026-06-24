@@ -4,7 +4,9 @@ import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Reveal } from "@/components/ui/Reveal";
+import { BrowserChrome, ImageHoverPreview } from "@/components/ui/ImageHoverPreview";
 import { staggerContainer, staggerItem, slideInRight } from "@/lib/animations";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 
 // ─── Static project data ───────────────────────────────────────────────────────
@@ -43,15 +45,31 @@ const urlByStudy: Record<StudyKey, string> = {
   repvix: "repvix.com/dashboard",
 };
 
+type ScreenshotEntry = string | { src: string; contain?: boolean };
+
 /**
- * Add real screenshot paths here to populate the gallery rows.
- * Each project supports up to 3 thumbnails.
- * Example: erp: ["/screenshots/erp-invoices.png", "/screenshots/erp-warehouse.png"]
+ * Hero image for the main browser frame + up to 3 gallery thumbnails per project.
+ * Use `contain: true` for portrait/mobile shots — padding is added around the image
+ * inside the shared aspect-video frame without cropping or stretching it.
  */
-const screenshotsByStudy: Record<StudyKey, string[]> = {
-  erp: [],
-  repvix: [],
+const heroImageByStudy: Partial<Record<StudyKey, string>> = {
+  repvix: "/repvix/repvix.com_en1.png",
 };
+
+const screenshotsByStudy: Record<StudyKey, ScreenshotEntry[]> = {
+  erp: [],
+  repvix: [
+    "/repvix/repvix.com_ar_dashboard2.png",
+    "/repvix/repvix.com_ar_dashboard3.png",
+    { src: "/repvix/phoneMokDark.png", contain: true },
+  ],
+};
+
+function resolveScreenshot(entry?: ScreenshotEntry) {
+  if (!entry) return undefined;
+  if (typeof entry === "string") return { src: entry, contain: false };
+  return { src: entry.src, contain: entry.contain ?? false };
+}
 
 // ─── Dashboard mockups ─────────────────────────────────────────────────────────
 
@@ -158,133 +176,45 @@ function ErpMockup() {
   );
 }
 
-function RepvixMockup() {
-  const scores = [92, 78, 45, 88, 61];
-  return (
-    <div
-      dir="ltr"
-      aria-hidden="true"
-      className="h-full w-full overflow-hidden bg-[#0b0e18] text-[8px] leading-none select-none"
-    >
-      <div className="flex h-7 items-center justify-between border-b border-white/6 bg-[#08090f] px-3">
-        <div className="flex items-center gap-2.5">
-          <div
-            className="h-3 w-12 rounded"
-            style={{ background: "rgba(129,140,248,0.35)" }}
-          />
-          {[1, 2, 3].map((i) => (
-            <div key={i} className="h-1.5 w-8 rounded bg-white/10" />
-          ))}
-        </div>
-        <div className="flex items-center gap-1.5">
-          <div
-            className="h-4 w-12 rounded"
-            style={{ background: "rgba(129,140,248,0.2)" }}
-          />
-          <div className="h-4 w-4 rounded-full bg-white/10" />
-        </div>
-      </div>
-      <div className="flex h-[calc(100%-1.75rem)]">
-        <div className="w-[42%] overflow-hidden border-r border-white/5">
-          <div className="border-b border-white/5 px-2.5 py-2">
-            <div className="h-1.5 w-16 rounded bg-white/20" />
-          </div>
-          {scores.map((score, i) => (
-            <div
-              key={i}
-              className="flex items-center gap-2 border-b border-white/4 px-2 py-1.5 last:border-0"
-            >
-              <div className="h-4 w-4 shrink-0 rounded-full bg-white/10" />
-              <div className="min-w-0 flex-1">
-                <div className="mb-0.5 h-1.5 w-14 rounded bg-white/25" />
-                <div className="h-1 w-16 rounded bg-white/10" />
-              </div>
-              <span
-                className="shrink-0 rounded px-1 py-0.5 text-[7px] font-semibold"
-                style={{
-                  background:
-                    score >= 80
-                      ? "rgba(52,211,153,0.2)"
-                      : score >= 60
-                        ? "rgba(251,191,36,0.2)"
-                        : "rgba(248,113,113,0.2)",
-                  color:
-                    score >= 80
-                      ? "#6ee7b7"
-                      : score >= 60
-                        ? "#fcd34d"
-                        : "#fca5a5",
-                }}
-              >
-                {score}
-              </span>
-            </div>
-          ))}
-        </div>
-        <div className="flex-1 space-y-2.5 overflow-hidden p-2.5">
-          <div className="h-1.5 w-16 rounded bg-white/20" />
-          {[
-            { pct: 67, color: "rgba(52,211,153,0.55)" },
-            { pct: 23, color: "rgba(255,255,255,0.22)" },
-            { pct: 10, color: "rgba(248,113,113,0.45)" },
-          ].map((bar, i) => (
-            <div key={i}>
-              <div className="mb-0.5 flex justify-between">
-                <div className="h-1.5 w-8 rounded bg-white/20" />
-                <div className="h-1.5 w-5 rounded bg-white/15" />
-              </div>
-              <div className="h-1.5 overflow-hidden rounded-full bg-white/6">
-                <div
-                  className="h-full rounded-full"
-                  style={{ width: `${bar.pct}%`, background: bar.color }}
-                />
-              </div>
-            </div>
-          ))}
-          <div
-            className="rounded-md border p-2"
-            style={{
-              borderColor: "rgba(129,140,248,0.2)",
-              background: "rgba(129,140,248,0.06)",
-            }}
-          >
-            <div className="mb-1 flex items-center gap-1">
-              <div
-                className="h-1.5 w-1.5 rounded-full"
-                style={{ background: "rgba(129,140,248,0.8)" }}
-              />
-              <div className="h-1.5 w-12 rounded bg-white/25" />
-            </div>
-            <div className="space-y-1">
-              <div className="h-1.5 w-full rounded bg-white/12" />
-              <div className="h-1.5 w-4/5 rounded bg-white/10" />
-              <div className="h-1.5 w-3/5 rounded bg-white/8" />
-            </div>
-          </div>
-          <div className="flex flex-wrap gap-1">
-            {[3, 2, 2, 2, 3].map((w, i) => (
-              <div key={i} className="rounded bg-white/5 px-1 py-0.5">
-                <div
-                  className="h-1 rounded bg-white/20"
-                  style={{ width: `${w * 8}px` }}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+// ─── Screenshot slots ──────────────────────────────────────────────────────────
 
-// ─── Screenshot placeholder ────────────────────────────────────────────────────
-
-function ScreenshotSlot({ src, alt }: { src?: string; alt: string }) {
+function ScreenshotSlot({
+  src,
+  alt,
+  url,
+  contain = false,
+}: {
+  src?: string;
+  alt: string;
+  url?: string;
+  contain?: boolean;
+}) {
   if (src) {
-    return (
-      <div className="relative aspect-video overflow-hidden rounded-xl border border-border-subtle">
-        <Image src={src} alt={alt} fill className="object-cover" />
+    const slot = (
+      <div
+        className={cn(
+          "relative aspect-video overflow-hidden rounded-xl border border-border-subtle transition-shadow duration-200 hover:shadow-elevated",
+          contain ? "bg-bg-tertiary" : "bg-[#0b0e18]",
+        )}
+      >
+        <div className={cn("absolute inset-0", contain && "p-3 sm:p-5")}>
+          <div className="relative h-full w-full">
+            <Image
+              src={src}
+              alt={alt}
+              fill
+              className={contain ? "object-contain" : "object-cover object-top"}
+              sizes="(max-width: 1024px) 33vw, 20vw"
+            />
+          </div>
+        </div>
       </div>
+    );
+
+    return (
+      <ImageHoverPreview src={src} alt={alt} url={url} contain={contain}>
+        {slot}
+      </ImageHoverPreview>
     );
   }
   return (
@@ -331,6 +261,7 @@ function ProjectBlock({
   const sections = ["problem", "decision", "result"] as const;
   const hasChallenge = t.has(`items.${studyKey}.challenge`);
   const screenshots = screenshotsByStudy[studyKey];
+  const heroImage = heroImageByStudy[studyKey];
 
   const metricContainer = {
     hidden: {},
@@ -398,29 +329,52 @@ function ProjectBlock({
           {/* LEFT: image showcase (always LTR) */}
           <div dir="ltr" className="space-y-3">
             {/* main browser mockup */}
-            <div className="overflow-hidden rounded-xl border border-border-subtle shadow-card">
-              <div className="flex items-center gap-1.5 border-b border-border-subtle bg-bg-tertiary px-4 py-2.5">
-                <span className="h-2.5 w-2.5 rounded-full bg-red-400/60" />
-                <span className="h-2.5 w-2.5 rounded-full bg-amber-400/60" />
-                <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/60" />
-                <div className="mx-3 max-w-[200px] flex-1 overflow-hidden rounded-md bg-bg-elevated px-3 py-1 text-center  text-[11px] text-text-tertiary">
-                  <span className="truncate">{urlByStudy[studyKey]}</span>
+            {heroImage ? (
+              <ImageHoverPreview
+                src={heroImage}
+                alt={t(`items.${studyKey}.title`)}
+                url={urlByStudy[studyKey]}
+              >
+                <BrowserChrome
+                  url={urlByStudy[studyKey]}
+                  className="transition-shadow duration-200 hover:shadow-elevated"
+                >
+                  <div className="h-64 sm:h-68">
+                    <div className="relative h-full w-full bg-[#0b0e18]">
+                      <Image
+                        src={heroImage}
+                        alt={t(`items.${studyKey}.title`)}
+                        fill
+                        className="object-cover object-top"
+                        sizes="(max-width: 1024px) 100vw, 60vw"
+                        priority
+                      />
+                    </div>
+                  </div>
+                </BrowserChrome>
+              </ImageHoverPreview>
+            ) : (
+              <BrowserChrome url={urlByStudy[studyKey]}>
+                <div className="h-64 sm:h-68">
+                  {studyKey === "erp" && <ErpMockup />}
                 </div>
-              </div>
-              <div className="h-64 sm:h-68">
-                {studyKey === "erp" ? <ErpMockup /> : <RepvixMockup />}
-              </div>
-            </div>
+              </BrowserChrome>
+            )}
 
             {/* screenshot thumbnail row (3 slots) */}
             <div className="grid grid-cols-3 gap-3">
-              {[0, 1, 2].map((i) => (
-                <ScreenshotSlot
-                  key={i}
-                  src={screenshots[i]}
-                  alt={`${t(`items.${studyKey}.title`)} — screenshot ${i + 1}`}
-                />
-              ))}
+              {[0, 1, 2].map((i) => {
+                const shot = resolveScreenshot(screenshots[i]);
+                return (
+                  <ScreenshotSlot
+                    key={i}
+                    src={shot?.src}
+                    contain={shot?.contain}
+                    url={urlByStudy[studyKey]}
+                    alt={`${t(`items.${studyKey}.title`)} — screenshot ${i + 1}`}
+                  />
+                );
+              })}
             </div>
           </div>
 

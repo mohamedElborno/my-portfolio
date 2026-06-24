@@ -298,25 +298,28 @@ export function ContactForm() {
       )}
 
       <p className="text-[11px] text-text-tertiary">
-        This site is protected by reCAPTCHA and the Google{" "}
-        <a
-          href="https://policies.google.com/privacy"
-          className="underline hover:text-accent"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Privacy Policy
-        </a>{" "}
-        and{" "}
-        <a
-          href="https://policies.google.com/terms"
-          className="underline hover:text-accent"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Terms of Service
-        </a>{" "}
-        apply.
+        {t.rich("recaptchaNotice", {
+          privacy: (chunks) => (
+            <a
+              href="https://policies.google.com/privacy"
+              className="underline hover:text-accent"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {chunks}
+            </a>
+          ),
+          terms: (chunks) => (
+            <a
+              href="https://policies.google.com/terms"
+              className="underline hover:text-accent"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {chunks}
+            </a>
+          ),
+        })}
       </p>
     </motion.form>
   );
