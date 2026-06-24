@@ -47,7 +47,7 @@ export function Footer() {
                 alt={nav("name")}
                 width={144}
                 height={144}
-                className="h-28 w-28 sm:h-36 sm:w-36"
+                className="h-28 w-28 sm:h-36 sm:w-36 invert dark:invert-0"
               />
             </a>
             <p className="max-w-xs text-[13px] leading-relaxed text-text-tertiary sm:text-sm -translate-y-12">
