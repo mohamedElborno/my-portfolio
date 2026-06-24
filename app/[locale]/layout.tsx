@@ -10,6 +10,39 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { Providers } from "@/components/Providers";
 import { CursorGlow } from "@/components/ui/CursorGlow";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
+import localFont from "next/font/local";
+
+const thmanyahSans = localFont({
+  src: [
+    {
+      path: "../../public/fonts/thmanyahsans-Light.woff2",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/thmanyahsans-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/thmanyahsans-Medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/thmanyahsans-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/thmanyahsans-Black.woff2",
+      weight: "900",
+      style: "normal",
+    },
+  ],
+  variable: "--font-thmanyah",
+  display: "swap",
+});
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -84,10 +117,10 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       dir={dir}
-      className={`h-full overflow-x-clip antialiased`}
+      className={`${thmanyahSans.variable} h-full overflow-x-clip antialiased`}
       suppressHydrationWarning
     >
-      <body className="flex min-h-dvh w-full flex-col overflow-x-clip bg-bg-primary text-text-primary">
+      <body className="flex min-h-dvh w-full flex-col overflow-x-clip bg-bg-primary text-text-primary font-thmanyah">
         {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
           <Script
             src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
