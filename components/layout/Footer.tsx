@@ -1,6 +1,7 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import Image from "next/image";
+import { useLocale, useTranslations } from "next-intl";
 import { ArrowUpRight } from "lucide-react";
 
 const navLinks = [
@@ -11,55 +12,96 @@ const navLinks = [
   { href: "#contact", key: "contact" as const },
 ];
 
+const socialLinks = [
+  {
+    href: "https://github.com/mohamedElborno",
+    label: "GitHub",
+    external: true,
+  },
+  {
+    href: "https://www.linkedin.com/in/mohamed-elborno-8a2524252",
+    label: "LinkedIn",
+    external: true,
+  },
+] as const;
+
 export function Footer() {
   const t = useTranslations("footer");
   const nav = useTranslations("nav");
   const contact = useTranslations("contact");
+  const locale = useLocale();
+  const isRtl = locale === "ar";
 
   return (
     <footer className="relative z-10 mt-12 w-full min-w-0 border-t border-border-subtle bg-bg-primary sm:mt-16">
-      <div className="mx-auto flex max-w-5xl flex-col gap-8 px-6 py-12 md:flex-row md:items-center md:justify-between md:py-10">
-        <p className="text-[13px] leading-relaxed text-text-tertiary">{t("tagline")}</p>
-
-        <nav className="flex flex-wrap gap-6" aria-label="Footer">
-          {navLinks.map((link) => (
+      <div className="mx-auto max-w-5xl px-6 py-12 sm:py-14">
+        <div className="grid gap-10 md:grid-cols-2 md:items-start md:gap-12 lg:gap-16">
+          <div className="relative flex max-w-sm flex-col gap-3 overflow-visible sm:gap-4">
             <a
-              key={link.key}
-              href={link.href}
-              className="text-[13px] text-text-secondary transition-colors hover:text-accent"
+              href="#hero"
+              className={`${isRtl ? "-mr-2 -mt-2 -translate-y-5 translate-x-6 inline-flex w-fit transition-opacity duration-200 hover:opacity-80 sm:-mt-4 sm:-mr-4" : "-ml-2 -mt-2 -translate-y-5 -translate-x-6 inline-flex w-fit transition-opacity duration-200 hover:opacity-80 sm:-mt-4 sm:-ml-4"}`}
+              aria-label={nav("name")}
             >
-              {nav(link.key)}
+              <Image
+                src="/my-logo.svg"
+                alt={nav("name")}
+                width={144}
+                height={144}
+                className="h-28 w-28 sm:h-36 sm:w-36"
+              />
             </a>
-          ))}
-        </nav>
+            <p className="max-w-xs text-[13px] leading-relaxed text-text-tertiary sm:text-sm -translate-y-12">
+              {t("tagline")}
+            </p>
+          </div>
+          <div
+            className={`grid gap-10 grid-cols-2 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]`}
+          >
+            <nav className="flex flex-col gap-3" aria-label="Footer">
+              {navLinks.map((link) => (
+                <a
+                  key={link.key}
+                  href={link.href}
+                  className="w-fit text-[13px] text-text-secondary transition-colors hover:text-accent sm:text-sm"
+                >
+                  {nav(link.key)}
+                </a>
+              ))}
+            </nav>
 
-        <div className="flex flex-wrap gap-4">
-          <a
-            href="https://github.com/mohamedElborno"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-[13px] text-text-secondary transition-colors hover:text-accent"
-          >
-            GitHub <ArrowUpRight size={12} />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/mohamed-elborno-8a2524252"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-[13px] text-text-secondary transition-colors hover:text-accent"
-          >
-            LinkedIn <ArrowUpRight size={12} />
-          </a>
-          <a
-            href={`mailto:${contact("email")}`}
-            className="inline-flex items-center gap-1 text-[13px] text-text-secondary transition-colors hover:text-accent"
-          >
-            {t("email")} <ArrowUpRight size={12} />
-          </a>
+            <div className="flex flex-col gap-3">
+              {socialLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex w-fit items-center gap-1 text-[13px] text-text-secondary transition-colors hover:text-accent sm:text-sm"
+                >
+                  {link.label}{" "}
+                  <ArrowUpRight
+                    size={12}
+                    className={`transition-transform duration-200 ${isRtl ? "group-hover:-translate-y-0.5 group-hover:-translate-x-0.5 rotate-y-180" : "group-hover:-translate-y-0.5 group-hover:translate-x-0.5"}`}
+                  />
+                </a>
+              ))}
+              <a
+                href={`mailto:${contact("email")}`}
+                className="group inline-flex w-fit items-center gap-1 text-[13px] text-text-secondary transition-colors hover:text-accent sm:text-sm"
+              >
+                {t("email")}{" "}
+                <ArrowUpRight
+                  size={12}
+                  className={`transition-transform duration-200 ${isRtl ? "group-hover:-translate-y-0.5 group-hover:-translate-x-0.5 rotate-y-180" : "group-hover:-translate-y-0.5 group-hover:translate-x-0.5"}`}
+                />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
-      <div className="border-t border-border-subtle px-6 py-4 text-center">
-        <p className=" text-[13px] text-text-tertiary">
+
+      <div className="border-t border-border-subtle px-6 py-4">
+        <p className="text-center text-[13px] text-text-tertiary">
           {t("copyright", { year: new Date().getFullYear() })}
         </p>
       </div>
