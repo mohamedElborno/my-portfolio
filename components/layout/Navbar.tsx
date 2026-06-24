@@ -24,14 +24,20 @@ type Locale = (typeof locales)[number];
 function LocaleDropdown({
   onSelect,
   className,
+  align,
+  placement = "below",
 }: {
   onSelect?: () => void;
   className?: string;
+  align?: "start" | "end";
+  placement?: "below" | "above";
 }) {
   const t = useTranslations("nav");
   const locale = useLocale() as Locale;
   const pathname = usePathname();
   const reduce = useReducedMotion();
+  const isRtl = locale === "ar";
+  const resolvedAlign = align ?? (isRtl ? "start" : "end");
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -79,14 +85,36 @@ function LocaleDropdown({
           <motion.ul
             role="listbox"
             aria-label={t("language")}
-            initial={reduce ? false : { opacity: 0, y: -6, scale: 0.98 }}
+            initial={
+              reduce
+                ? false
+                : {
+                    opacity: 0,
+                    y: placement === "below" ? -6 : 6,
+                    scale: 0.98,
+                  }
+            }
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={reduce ? undefined : { opacity: 0, y: -6, scale: 0.98 }}
+            exit={
+              reduce
+                ? undefined
+                : {
+                    opacity: 0,
+                    y: placement === "below" ? -6 : 6,
+                    scale: 0.98,
+                  }
+            }
             transition={{
               duration: reduce ? 0 : 0.18,
               ease: [0.21, 0.47, 0.32, 0.98],
             }}
-            className="absolute inset-e-0 top-[calc(100%+0.375rem)] z-50 min-w-38 overflow-hidden rounded-xl border border-border-default bg-bg-secondary p-1 shadow-elevated backdrop-blur-xl space-y-1"
+            className={cn(
+              "absolute z-50 min-w-38 max-w-[calc(100vw-3rem)] overflow-hidden rounded-xl border border-border-default bg-bg-secondary p-1 shadow-elevated backdrop-blur-xl space-y-1",
+              resolvedAlign === "start" ? "inset-s-0" : "inset-e-0",
+              placement === "below"
+                ? "top-[calc(100%+0.375rem)]"
+                : "bottom-[calc(100%+0.375rem)]",
+            )}
           >
             {locales.map((loc) => {
               const isActive = locale === loc;
@@ -310,11 +338,11 @@ export function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: reduce ? 0 : 0.2 }}
-            className="fixed inset-0 z-40 flex flex-col overflow-hidden overscroll-none bg-bg-primary/95 backdrop-blur-xl md:hidden"
+            className="fixed inset-0 z-40 flex flex-col overscroll-none bg-bg-primary/95 backdrop-blur-xl md:hidden"
           >
             <div
               ref={mobileMenuRef}
-              className="flex flex-1 flex-col overflow-y-auto overscroll-contain px-6 pb-8 pt-20 sm:px-8"
+              className="flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-contain px-6 pt-20 sm:px-8"
             >
               <motion.nav
                 className="flex flex-col gap-2"
@@ -348,9 +376,15 @@ export function Navbar() {
                   </motion.a>
                 ))}
               </motion.nav>
+            </div>
 
-              <div className="mt-8 flex items-center justify-between gap-4">
-                <LocaleDropdown onSelect={() => setMenuOpen(false)} />
+            <div className="shrink-0 px-6 pb-8 pt-4 sm:px-8">
+              <div className="flex items-center justify-between gap-4">
+                <LocaleDropdown
+                  align={isRtl ? "end" : "start"}
+                  placement="above"
+                  onSelect={() => setMenuOpen(false)}
+                />
                 <ThemeToggle />
               </div>
 
