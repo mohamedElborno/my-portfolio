@@ -75,6 +75,7 @@
   --shadow-accent-md: 0 0 24px var(--accent-glow);
   --shadow-card: var(--elevation-1);
   --shadow-elevated: var(--elevation-2);
+  --font-thmanyah: var(--font-thmanyah-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
 .grecaptcha-badge {
@@ -115,6 +116,7 @@
   body {
     background-color: var(--bg-primary);
     color: var(--text-primary);
+    font-family: var(--font-thmanyah-sans), ui-sans-serif, system-ui, sans-serif;
     overflow-x: clip;
     max-width: 100%;
   }

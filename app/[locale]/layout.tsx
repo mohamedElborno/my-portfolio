@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Inter, IBM_Plex_Sans_Arabic, JetBrains_Mono } from "next/font/google";
 import "../globals.css";
 import { routing } from "@/i18n/routing";
 import { getSiteUrl } from "@/lib/site";
@@ -39,7 +38,7 @@ const thmanyahSans = localFont({
       style: "normal",
     },
   ],
-  variable: "--font-thmanyah",
+  variable: "--font-thmanyah-sans",
   display: "swap",
 });
 
@@ -116,10 +115,10 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       dir={dir}
-      className={`${thmanyahSans.variable} h-full overflow-x-clip antialiased`}
+      className={`${thmanyahSans.variable} ${thmanyahSans.className} h-full overflow-x-clip antialiased`}
       suppressHydrationWarning
     >
-      <body className="flex min-h-dvh w-full flex-col overflow-x-clip bg-bg-primary text-text-primary font-thmanyah">
+      <body className="flex min-h-dvh w-full flex-col overflow-x-clip bg-bg-primary text-text-primary">
         <Providers>
           <NextIntlClientProvider locale={locale} messages={messages}>
             <div className="flex min-h-dvh w-full min-w-0 flex-col overflow-x-clip">
