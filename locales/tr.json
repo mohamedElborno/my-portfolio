@@ -1,7 +1,12 @@
 {
   "metadata": {
-    "title": "Mohamed Elborno | Ürün Odaklı Full Stack Yazılım Mühendisi",
-    "description": "ERP sistemleri, SaaS platformları ve yapay zeka destekli ürünler konusunda uzmanlaşmış Full Stack Yazılım Mühendisi. Karmaşık finansal sistemlerin ve uçtan uca prodüksiyon yazılımlarının ana geliştiricisi."
+    "title": "Mohamed Elborno | Full Stack Yazılım Mühendisi",
+    "description": "Mohamed Elborno'nun kişisel web sitesi; özel ERP sistemleri mühendisliği, SaaS platformlarının altyapı kurulumu ve uygulamalı yapay zeka entegrasyonlarında uzmanlaşmış Full Stack Yazılım Mühendisi.",
+    "siteName": "Mohamed Elborno",
+    "ogTitle": "Mohamed Elborno | Full Stack Yazılım Mühendisi",
+    "ogDescription": "Ticari karmaşıklıkları ve iş süreçlerini, iş büyümesiyle birlikte verimli bir şekilde ölçeklenen sağlam teknik sistemlere dönüştürür.",
+    "ogType": "profile",
+    "ogTagline": "ERP · SaaS · Uygulamalı Yapay Zeka"
   },
   "nav": {
     "name": "Mohamed Elborno",

@@ -1,7 +1,12 @@
 {
   "metadata": {
-    "title": "Mohamed Elborno | Product-Focused Full Stack Engineer",
-    "description": "Full Stack Engineer specializing in ERP systems, SaaS platforms, and AI-powered products. Core developer behind complex financial systems and end-to-end production software."
+    "title": "Mohamed Elborno | Full Stack Software Engineer",
+    "description": "The personal website of Mohamed Elborno; a Full Stack Software Engineer specializing in engineering custom ERP systems, architecting SaaS platforms, and integrating applied AI solutions.",
+    "siteName": "Mohamed Elborno",
+    "ogTitle": "Mohamed Elborno | Full Stack Software Engineer",
+    "ogDescription": "Translating business complexities and workflows into robust technical systems that scale efficiently with business growth.",
+    "ogType": "profile",
+    "ogTagline": "ERP · SaaS · Applied AI"
   },
   "nav": {
     "name": "Mohamed Elborno",

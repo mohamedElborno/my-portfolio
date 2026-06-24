@@ -3,6 +3,7 @@ import { Inter, IBM_Plex_Sans_Arabic, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
 import "../globals.css";
 import { routing } from "@/i18n/routing";
+import { getSiteUrl } from "@/lib/site";
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
@@ -54,10 +55,43 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata" });
+  const siteUrl = getSiteUrl();
+  const pageUrl = `${siteUrl}/${locale}`;
+
+  const openGraphLocale =
+    locale === "ar" ? "ar_SA" : locale === "tr" ? "tr_TR" : "en_US";
 
   return {
+    metadataBase: new URL(siteUrl),
     title: t("title"),
     description: t("description"),
+    icons: {
+      icon: "/my-logo.svg",
+      shortcut: "/my-logo.svg",
+      apple: "/my-logo.svg",
+    },
+    alternates: {
+      canonical: pageUrl,
+      languages: Object.fromEntries(
+        routing.locales.map((loc) => [loc, `${siteUrl}/${loc}`]),
+      ),
+    },
+    openGraph: {
+      type: "website",
+      locale: openGraphLocale,
+      alternateLocale: routing.locales
+        .filter((loc) => loc !== locale)
+        .map((loc) => (loc === "ar" ? "ar_SA" : loc === "tr" ? "tr_TR" : "en_US")),
+      url: pageUrl,
+      siteName: t("siteName"),
+      title: t("title"),
+      description: t("description"),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("description"),
+    },
   };
 }
 
