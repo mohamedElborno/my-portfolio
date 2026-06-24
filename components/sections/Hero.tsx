@@ -80,20 +80,30 @@ export function Hero() {
 
           {/* headline */}
           <h1 className="mb-4 text-[clamp(2.4rem,5.4vw,3.9rem)] font-bold leading-[1.1] tracking-[-0.035em] text-text-primary">
-            <motion.span {...enter(32, 0.2)} className="block">
+            <span className="block md:hidden">{headline1}</span>
+            <motion.span {...enter(32, 0.2)} className="hidden md:block">
               {headline1}
             </motion.span>
             {headline2 && (
-              <motion.span {...enter(32, 0.3)} className="block text-gradient">
-                {headline2}
-              </motion.span>
+              <>
+                <span className="block text-gradient md:hidden">{headline2}</span>
+                <motion.span
+                  {...enter(32, 0.3)}
+                  className="hidden md:block text-gradient"
+                >
+                  {headline2}
+                </motion.span>
+              </>
             )}
           </h1>
 
           {/* subheadline */}
+          <p className="mb-9 max-w-lg text-[clamp(0.975rem,1.5vw,1.1rem)] leading-relaxed text-secondary md:hidden">
+            {t("subheadline")}
+          </p>
           <motion.p
             {...enter(20, 0.46)}
-            className="mb-9 max-w-lg text-[clamp(0.975rem,1.5vw,1.1rem)] leading-relaxed text-secondary"
+            className="mb-9 hidden max-w-lg text-[clamp(0.975rem,1.5vw,1.1rem)] leading-relaxed text-secondary md:block"
           >
             {t("subheadline")}
           </motion.p>

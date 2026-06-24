@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Inter, IBM_Plex_Sans_Arabic, JetBrains_Mono } from "next/font/google";
-import Script from "next/script";
 import "../globals.css";
 import { routing } from "@/i18n/routing";
 import { getSiteUrl } from "@/lib/site";
@@ -121,12 +120,6 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <body className="flex min-h-dvh w-full flex-col overflow-x-clip bg-bg-primary text-text-primary font-thmanyah">
-        {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
-          <Script
-            src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
-            strategy="lazyOnload"
-          />
-        )}
         <Providers>
           <NextIntlClientProvider locale={locale} messages={messages}>
             <div className="flex min-h-dvh w-full min-w-0 flex-col overflow-x-clip">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, type FormEvent } from "react";
+import { useState, useEffect, useRef, type FormEvent } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import {
   motion,
@@ -52,8 +52,15 @@ export function ContactForm() {
   const isRtl = locale === "ar";
   const reduce = useReducedMotion();
   const submitForm = useAction(api.contact.submitContactForm);
-  const { executeRecaptcha } = useRecaptcha();
+  const { executeRecaptcha, loadRecaptchaScript } = useRecaptcha();
   const buttonControls = useAnimation();
+  const recaptchaLoadQueued = useRef(false);
+
+  const queueRecaptchaLoad = () => {
+    if (recaptchaLoadQueued.current) return;
+    recaptchaLoadQueued.current = true;
+    void loadRecaptchaScript();
+  };
 
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<FormErrors>({});
@@ -169,13 +176,18 @@ export function ContactForm() {
     >
       <div className="grid gap-5 sm:grid-cols-2">
         <Field shake={!!errors.name} reduce={!!reduce}>
-          <FormInput
-            name="name"
-            label={t("name")}
-            required
-            autoComplete="name"
-            error={errors.name}
-          />
+          <div
+            onMouseEnter={queueRecaptchaLoad}
+            onFocusCapture={queueRecaptchaLoad}
+          >
+            <FormInput
+              name="name"
+              label={t("name")}
+              required
+              autoComplete="name"
+              error={errors.name}
+            />
+          </div>
         </Field>
         <Field shake={!!errors.email} reduce={!!reduce}>
           <FormInput
