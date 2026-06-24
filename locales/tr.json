@@ -1,0 +1,243 @@
+{
+  "metadata": {
+    "title": "Mohamed Elborno | Ürün Odaklı Full Stack Yazılım Mühendisi",
+    "description": "ERP sistemleri, SaaS platformları ve yapay zeka destekli ürünler konusunda uzmanlaşmış Full Stack Yazılım Mühendisi. Karmaşık finansal sistemlerin ve uçtan uca prodüksiyon yazılımlarının ana geliştiricisi."
+  },
+  "nav": {
+    "name": "Mohamed Elborno",
+    "title": "Full Stack Yazılım Mühendisi",
+    "about": "Hakkımda",
+    "services": "Hizmetler",
+    "work": "Çalışmalar",
+    "stack": "Teknolojiler",
+    "contact": "İletişim",
+    "menuOpen": "Menüyü Aç",
+    "menuClose": "Menüyü Kapat"
+  },
+  "theme": {
+    "switchToDark": "Karanlık Moda Geç",
+    "switchToLight": "Aydınlık Moda Geç"
+  },
+  "hero": {
+    "headline": "İşletmenizin sırtını yaslayacağı güçlü teknik sistemler inşa ediyorum.",
+    "subheadline": "ERP, SaaS ve yapay zeka çözümlerinde uzmanlaşmış Full Stack Yazılım Mühendisi. Karmaşık iş gereksinimlerini ölçeklenebilir, canlıya hazır mimarilere dönüştürüyor; ürün yaşam döngüsünü baştan sona yönetiyorum.",
+    "ctaWork": "Çalışmalarıma Göz At",
+    "ctaContact": "İletişime Geç",
+    "builtWith": "Geliştirilmiş",
+    "stats": {
+      "uptime": "1.200'den Fazla Aktif Veri Varlığı",
+      "shipped": "Canlıya Alınan SaaS Ürünleri",
+      "languages": "7 Dilde Yapay Zeka Analizi"
+    }
+  },
+  "about": {
+    "label": "Hakkımda",
+    "available": "Çalışmaya Hazır",
+    "role": "Ürün Odaklı Full Stack Yazılım Mühendisi | Erzurum, Türkiye",
+    "quote": "Yazılım mühendisliğinde temel amaç, veri çelişkilerini önleyen ve gerçek dünya operasyonlarıyla kusursuz eşleşen katı bir iş mantığı inşa etmektir.",
+    "p1": "Erzurum, Türkiye'de yaşıyorum. Pratik deneyimim, ticari operasyonların yönetimi için özel yazılım çözümleri geliştirmeye dayanıyor; bu doğrultuda, her ay milyonlarca riyal hacminde teklif ve finansal akışı yöneten ve bunları muhasebe kayıtlarıyla otomatik olarak entegre eden satış ve fatura motorları ile 7 farklı dilde anlık işleyen yapay zeka veri hatları inşa ediyorum.",
+    "p2": "Uzmanlığım; satış ve satın alma döngüleri, depo hareketleri yönetimi gibi temel ERP ve tedarik zinciri modüllerinin geliştirilmesini ve SaaS altyapılarının kurulmasını kapsıyor. API'lerin yazılması ve veritabanı mimarisinin yapılandırılmasından, kullanıcı arayüzü geliştirme ve canlıya dağıtıma kadar ürün yaşam döngüsünün teknik sorumluluğunu üstleniyorum.",
+    "p3": "İster net referans yollarıyla bakiyeleri, borç/alacak hareketlerini kesin olarak takip eden ara kredi defterleri tasarlamak olsun, ister fiili düşüşten önce stok kontrolü ve blokajını garanti altına alan lojistik döngüleri kurgulamak; temel amacım her zaman gerçek iş ihtiyaçları ile sahada uygulanan yazılım çözümleri arasındaki boşluğu kapatmaktır."
+  },
+  "services": {
+    "label": "Hizmetler",
+    "headline": "En karmaşık operasyonel detayları",
+    "headlineAccent": "üstlenen teknik sistemler.",
+    "items": {
+      "erp": {
+        "title": "ERP Satış ve Fatura Mühendisliği",
+        "description": "API'lerden ön yüze kadar entegre satış sistemleri geliştirme; teklif yönetimi, tahsilat makbuzlarıyla otomatik bağlama, fazla ödemelerin müşteri bakiyesine aktarılması, ZATCA uyumluluğu için altyapı hazırlığı ve tüm bu hareketlerin genel muhasebe yevmiye kayıtlarıyla otomatik entegrasyonu.",
+        "tags": [
+          "Tahsilat Makbuzları",
+          "Yevmiye Entegrasyonu",
+          "Fatura Yönetimi"
+        ],
+        "quotations": "Teklifler",
+        "receipts": "Makbuzlar",
+        "invoices": "Faturalar",
+        "deliveries": "Teslimat Emirleri",
+        "journalEntries": "Yevmiye Kayıtları"
+      },
+      "financial": {
+        "title": "Kredi Yönetimi ve Denetim Defterleri",
+        "description": "Müşteri ve tedarikçilerin kredi taleplerini ve bakiyelerini yönetmek için ara defter (Ledger) sistemi geliştirme. Veri çelişkilerini önlemek adına; önceki ve güncel bakiyeyi, işlem türünü ve referansları (fatura veya teklif) kaydederek her borç/alacak hareketinin sıkı takibi.",
+        "tags": ["Ara Defterler", "Bakiye Takibi", "Kredi Yönetimi"]
+      },
+      "ai": {
+        "title": "Uygulamalı Yapay Zeka Entegrasyonu",
+        "description": "Çok dilli duygu analizi, müşteri kaybı tahmini ve davranışsal analiz için maliyet optimizasyonlu büyük dil modelleri (LLM) kullanan, canlı ortamda çalışmaya hazır yapay zeka sistemleri. Konsept kanıtlamanın ötesinde, tamamen SaaS birim ekonomisine uygun tasarlanmıştır.",
+        "tags": ["GPT-5 Mini", "Çok Dilli İşleme", "Maliyet Odaklı Yapay Zeka"]
+      },
+      "saas": {
+        "title": "SaaS Mimarisi ve Altyapısı",
+        "description": "Kurumsal düzeyde yetkilendirme (RBAC), abonelik faturalandırması, reaktif anlık veri hatları ve etkileşimli kontrol panelleri içeren kapsamlı SaaS altyapıların kurulması. İş mantığı gereksinimlerinden canlıya dağıtıma kadar tüm süreci uçtan uca yürütme.",
+        "tags": [
+          "RBAC (Clerk)",
+          "Faturalandırma Altyapısı",
+          "Anlık Veri Hatları"
+        ]
+      },
+      "analytics": {
+        "title": "Müşteri Davranış Analitiği",
+        "description": "Görüşmeleri anlık analiz eden, müşteri kaybı risklerini değerlendiren ve ekip performansını ölçen özel araçlar geliştirme. Ham destek verilerini ve davranışsal sinyalleri üst yönetime uygun, düzenli ve stratejik içgörülere dönüştürme.",
+        "tags": ["Kayıp Tespiti", "Konuşma Analizi", "Performans Analitiği"]
+      },
+      "database": {
+        "title": "Veritabanı Mimarisi ve Optimizasyonu",
+        "description": "Yüksek eşzamanlı (concurrency) ortamlar için karmaşık MongoDB ve PostgreSQL şemaları tasarımı. Veri tutarlılığını garanti ederek, çakışmaları önleyerek ve yüksek işlem yükleri altında sorgu modellerini optimize ederek 1.200'den fazla aktif varlığı destekleme.",
+        "tags": ["MongoDB", "PostgreSQL", "Yüksek Eşzamanlılık"]
+      }
+    }
+  },
+  "caseStudies": {
+    "label": "Öne Çıkan Çalışmalar",
+    "headline": "Başarıyla Geliştirilen Sistemler.",
+    "headlineAccent": "Çözülen Gerçek Sorunlar.",
+    "sections": {
+      "problem": "Sorun",
+      "decision": "Mimari ve Karar",
+      "challenge": "Teknik Zorluk",
+      "result": "Sonuç ve Etki"
+    },
+    "live": "Canlıda",
+    "active": "Prodüksiyonda Aktif",
+    "items": {
+      "erp": {
+        "tag": "ERP · Demir Çelik Sektörü · Muhasebe Entegrasyonu",
+        "title": "Demir Çelik Sektörüne Özel bir ERP Sistemi için Satış Döngüsü ve Lojistik Geliştirilmesi",
+        "period": "Nisan 2025 – Günümüz",
+        "problem": "Büyük bir işlem hacmine sahip Suudi bir şirket; tahsilat makbuzları, müşteri kredi bakiyeleri ve canlı depo stok düşüşleri arasında çelişki yaşanmaması için muhasebe ile lojistik süreçlerini birbirine bağlayacak sıkı bir otomasyona ihtiyaç duyuyordu.",
+        "decision": "Teklif ve tahsilat makbuzu sistemini uçtan uca geliştirerek faturaları, makbuzları ve teslimat emirlerini gerçek zamanlı işlem kaydı için doğrudan yevmiye sistemine bağlayan entegre bir iş mantığı kurguladım. Kredi detaylarını belgelemek için ara bir kredi kayıt defteri (Log) tasarladım ve yasal uyumluluğa hazır bir faturalandırma yapısı kurdum.",
+        "challenge": "Hassas finansal verileri lojistik modülünden ayırırken süreç bütünlüğünü korumak; otomatik stok kontrolü yapılmadan hiçbir teslimat emrinin işleme alınmamasını sağlamak ve depo sorumlusu onaylayana kadar fiili stok düşüşünü engellemek.",
+        "result": "Saha operasyonları ile yevmiye sistemi arasında eksiksiz ve otomatik senkronizasyon sağlayan, canlı üretim ortamında kararlı bir operasyonel döngü; esnek kredi ve depo yönetiminin yanı sıra canlı hesap dengelerinde sıfır hata."
+      },
+      "repvix": {
+        "tag": "SaaS · Uygulamalı Yapay Zeka · Müşteri Analitiği",
+        "title": "Repvix — Yapay Zeka Destekli Müşteri Analiz Platformu",
+        "period": "Ekim 2025 – Kasım 2025",
+        "liveUrl": "https://repvix.com",
+        "problem": "B2B şirketlerinin WhatsApp ve Zendesk üzerinde binlerce konuşmaya sahip olmasına rağmen, müşteri kaybı risklerini tespit edecek, ekip performansını ölçeklendirecek ve bu ham etkileşimlerden katma değer sağlayacak anlamlı bir analiz katmanından yoksun olması.",
+        "decision": "Convex ve Node.js kullanarak, maliyet optimizasyonlu GPT-5 Mini entegrasyonuna sahip anlık bir veri işleme hattı kurdum. İş akışı içine anlık yapay zeka araçları sağlamak için özel bir Zendesk Sidebar uygulaması geliştirdim. Platformun tüm altyapısını (RBAC, faturalandırma, kontrol paneli) 6 haftada tek başıma tamamladım.",
+        "challenge": "Arapça, Türkçe ve İngilizce dahil olmak üzere 7 farklı dilde duygu ve niyet analizini aynı onda yüksek doğrulukla gerçekleştirmek; her dilin davranışsal yorumlamayı doğrudan etkileyen kültürel ve yapısal nüanslarını yönetmek.",
+        "result": "Çok dilli yapay zeka analizleri, müşteri kaybı riski tespiti, ekip performansı değerlendirmeleri ve yönetim panelleri sunan tam entegre bir SaaS ürünü (repvix.com). Tek bir mühendis tarafından 6 haftada inşa edilip canlıya alındı."
+      }
+    },
+    "metricLabels": {
+      "entities": "Veritabanı Varlıkları",
+      "modules": "Temel Modüller",
+      "active": "Canlı Ortamda",
+      "timeline": "Sıfırdan Yayına",
+      "languages": "Desteklenen Diller",
+      "integrations": "Sistem Entegrasyonları"
+    },
+    "otherProjects": {
+      "label": "Diğer Projeler",
+      "statusCompleted": "Tamamlandı",
+      "statusCancelled": "İptal Edildi",
+      "isworb": {
+        "title": "isworb Kurumsal Sınıflandırma Platformu",
+        "description": "Ticari işletmelerin işgalci varlıkla olan ekonomik ilişkileri ve etkileşimlerine göre izlenmesi ve sınıflandırılması için geliştirilmiş uzmanlaşmış bir platform. Sınıflandırmaların doğruluğunu ve güvenilirliğini sağlamak amacıyla Full Stack Geliştirici ve veri denetçisi olarak projeye katkıda bulundum."
+      },
+      "danerdz": {
+        "title": "danerdz Yapay Zeka Destekli Eğitim Platformu",
+        "description": "Yüklenen ders materyallerini ve kitapları otomatik olarak bilgi kartlarına (Flashcards) ve etkileşimli sınavlara dönüştüren, kupa sistemi ve ilerleme takibi gibi oyunlaştırma (Gamification) öğelerini barındıran yapay zeka tabanlı bir eğitim platformu."
+      },
+      "grandfather": {
+        "title": "Dijital Arşiv ve Anı Web Sitesi",
+        "description": "Kendisine ve ailesine bir sadaka-i cariye (sürekli sadaka) olması amacıyla; tüm kitaplarını, yazılarını ve multimedya kliplerini merkezi bir veri havuzunda toplamak ve belgelemek için geliştirilmiş dijital arşiv platformu. Temiz bir içerik mimarisi ve sorunsuz okuma deneyimi odağıyla inşa edilmiştir."
+      }
+    }
+  },
+  "techStack": {
+    "label": "Teknoloji Havuzu",
+    "headline": "Güvenilir ve canlıya hazır sistemler",
+    "headlineAccent": "inşa ederken kullandığım araçlar.",
+    "groups": {
+      "frontend": {
+        "label": "Kullanıcı Arayüzü (Frontend)",
+        "items": [
+          "Next.js 15",
+          "TypeScript",
+          "React",
+          "Node.js",
+          "Tailwind CSS 4.x",
+          "Framer Motion"
+        ]
+      },
+      "backend": {
+        "label": "Arka Plan ve API'ler (Backend & APIs)",
+        "items": [
+          "Convex",
+          "REST APIs",
+          "Supabase",
+          "Directus",
+          "Sanity (GROQ)",
+          "HTML5/CSS3"
+        ]
+      },
+      "databases": {
+        "label": "Veri ve Depolama",
+        "items": ["MongoDB", "PostgreSQL", "Convex DB"]
+      },
+      "ai": {
+        "label": "Yapay Zeka ve Analiz",
+        "items": [
+          "GPT-5 Mini",
+          "LLM Prompt Mühendisliği",
+          "Çok Dilli İşleme",
+          "Yapay Zeka Maliyet Optimizasyonu",
+          "Optik Karakter Tanıma (OCR)"
+        ]
+      },
+      "devops": {
+        "label": "SaaS ve Altyapı",
+        "items": [
+          "Clerk (RBAC)",
+          "Lemon Squeezy",
+          "Zendesk Uygulamaları",
+          "Vercel",
+          "GitHub Actions",
+          "Sanal Makineler (VMs)"
+        ]
+      }
+    }
+  },
+  "contact": {
+    "label": "İletişim",
+    "heading": "Gelecek projeniz hakkında konuşalım.",
+    "paragraph": "Ürün mühendisliği rolleri, uzun vadeli teknik iş birlikleri ve seçkin danışmanlık talepleri için uygundur. Genellikle 24 saat içinde dönüş yaparım.",
+    "email": "m7d.elborno@gmail.com",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "location": "Erzurum, Türkiye"
+  },
+  "form": {
+    "name": "Ad Soyad",
+    "email": "E-posta Adresi",
+    "subject": "Konu",
+    "budget": "Tahmini Bütçe",
+    "message": "Mesaj",
+    "submit": "Mesajı Gönder",
+    "submitting": "Gönderiliyor...",
+    "success": "Mesajınız başarıyla gönderildi. 24 saat içinde sizinle iletişime geçeceğim.",
+    "error": "Beklenmedik bir hata oluştu. Lütfen tekrar deneyin veya doğrudan e-posta yoluyla iletişime geçin.",
+    "validation": {
+      "nameMin": "İsim en az iki karakterden oluşmalıdır",
+      "emailInvalid": "Lütfen geçerli bir e-posta adresi giriniz",
+      "subjectRequired": "Konu alanı zorunludur",
+      "messageMin": "Talebinizi net açıklayabilmeniz için mesajınız en az 20 karakter olmalıdır"
+    },
+    "budgetOptions": {
+      "under500": "500 Dolar Altı",
+      "500to2000": "500$ ila 2.000$",
+      "2000to5000": "2.000$ ila 5.000$",
+      "over5000": "5.000 Dolar Üzeri",
+      "discuss": "Önce görüşmeyi tercih ederim"
+    }
+  },
+  "footer": {
+    "tagline": "Mohamed Elborno . Ürün Odaklı Full Stack Yazılım Mühendisi",
+    "copyright": "© {year} Mohamed Elborno | Next.js ile geliştirilmiştir",
+    "email": "E-posta"
+  }
+}

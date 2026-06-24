@@ -1,0 +1,247 @@
+{
+  "metadata": {
+    "title": "Mohamed Elborno | Product-Focused Full Stack Engineer",
+    "description": "Full Stack Engineer specializing in ERP systems, SaaS platforms, and AI-powered products. Core developer behind complex financial systems and end-to-end production software."
+  },
+  "nav": {
+    "name": "Mohamed Elborno",
+    "title": "Full Stack Engineer",
+    "about": "About",
+    "services": "Services",
+    "work": "Work",
+    "stack": "Tech Stack",
+    "contact": "Contact",
+    "menuOpen": "Open Menu",
+    "menuClose": "Close Menu"
+  },
+  "theme": {
+    "switchToDark": "Switch to Dark Mode",
+    "switchToLight": "Switch to Light Mode"
+  },
+  "hero": {
+    "headline": "Architecting resilient systems that power your business.",
+    "subheadline": "Full Stack Engineer specializing in ERP, SaaS, and AI solutions. Translating complex business requirements into scalable, production-ready architectures—managing the complete product lifecycle from inception to deployment.",
+    "ctaWork": "View My Work",
+    "ctaContact": "Get in Touch",
+    "builtWith": "Built with",
+    "stats": {
+      "uptime": "1,200+ Active Entities",
+      "shipped": "Production SaaS Shipped",
+      "languages": "7+ Languages Processed"
+    }
+  },
+  "about": {
+    "label": "About",
+    "available": "Available for Work",
+    "role": "Product-Focused Full Stack Engineer | Erzurum, Turkey",
+    "quote": "The primary goal of software engineering is to build rigorous business logic that prevents data discrepancies and aligns perfectly with real-world operations.",
+    "p1": "Based in Erzurum, Turkey, my practical experience lies in building custom business operations solutions. This includes engineering sales and invoicing engines that handle millions of SAR in monthly transaction flows while automatically integrating them with accounting journals, alongside real-time AI processing pipelines operating across 7 different languages.",
+    "p2": "My expertise covers developing core ERP and supply chain modules, such as sales and procurement lifecycles, warehouse movement management, and building SaaS architectures. I take technical ownership of the product lifecycle—from designing APIs and database schemas to frontend development and production deployment.",
+    "p3": "Whether the challenge involves engineering intermediary credit ledgers to track balances and debit/credit movements with clear reference paths, or designing logistics workflows that handle stock validation and reservation prior to actual deduction; my ultimate goal is to bridge the gap between real business needs and deployed technical solutions."
+  },
+  "services": {
+    "label": "Services",
+    "headline": "Engineering systems that handle",
+    "headlineAccent": "the critical complexity.",
+    "items": {
+      "erp": {
+        "title": "ERP Sales & Invoicing Engineering",
+        "description": "Building integrated sales workflows from APIs to frontend; including quotation management, automated linkage to receipts, rolling over excess amounts into customer balances, and architecting an integration-ready invoicing base for ZATCA compliance while syncing all movements automatically with the accounting general ledger.",
+        "tags": ["Receipt Management", "Ledger Integration", "Invoice Systems"],
+        "quotations": "Quotations",
+        "receipts": "Receipts",
+        "invoices": "Invoices",
+        "deliveries": "Deliveries",
+        "journalEntries": "Journal Entries"
+      },
+      "financial": {
+        "title": "Credit Management & Audit Ledgers",
+        "description": "Developing an intermediary ledger system to manage credit requests and balance updates for clients and vendors. Strict tracking of every debit or credit movement with historical balance logging, transaction types, and deep reference tracking to eliminate race conditions.",
+        "tags": [
+          "Intermediary Ledgers",
+          "Balance Tracking",
+          "Credit Management"
+        ]
+      },
+      "ai": {
+        "title": "Applied AI Integration",
+        "description": "Deploying production-grade AI systems using cost-optimized LLMs for multilingual sentiment analysis, churn risk forecasting, and behavioral intelligence—structured tailored to SaaS unit economics rather than basic proofs of concept.",
+        "tags": ["GPT-5 Mini", "Multilingual Processing", "Cost-Aware AI"]
+      },
+      "saas": {
+        "title": "SaaS Architecture & Infrastructure",
+        "description": "Establishing comprehensive enterprise SaaS infrastructure, covering organization-based RBAC, subscription billing cycles, reactive real-time data pipelines, and interactive control panels. Handling the full spectrum from business logic requirements to final production deployment.",
+        "tags": [
+          "RBAC (Clerk)",
+          "Billing Infrastructure",
+          "Real-Time Pipelines"
+        ]
+      },
+      "analytics": {
+        "title": "Customer Behavioral Analytics",
+        "description": "Developing custom engines for real-time conversation analysis, customer churn evaluations, and team performance metrics. Transforming raw support metadata and behavioral touchpoints into structured, executive-ready insights.",
+        "tags": [
+          "Churn Prevention",
+          "Conversation Analysis",
+          "Performance Analytics"
+        ]
+      },
+      "database": {
+        "title": "Database Architecture & Optimization",
+        "description": "Designing complex MongoDB and PostgreSQL schemas optimized for high-concurrency environments. Supporting 1,200+ active entities while guaranteeing data consistency, eliminating update race conditions, and tuning query execution paths under heavy operational loads.",
+        "tags": ["MongoDB", "PostgreSQL", "High Concurrency"]
+      }
+    }
+  },
+  "caseStudies": {
+    "label": "Featured Work",
+    "headline": "Systems Built.",
+    "headlineAccent": "Challenges Solved.",
+    "sections": {
+      "problem": "The Problem",
+      "decision": "Architecture & Strategy",
+      "challenge": "Technical Challenge",
+      "result": "Impact & Outcome"
+    },
+    "live": "Live",
+    "active": "Active in Production",
+    "items": {
+      "erp": {
+        "tag": "ERP · Steel Manufacturing · Accounting Integration",
+        "title": "Developing the Sales Lifecycle and Logistics for a Steel Manufacturing ERP",
+        "period": "April 2025 – Present",
+        "problem": "A Saudi company with a massive transaction volume required strict automation to bridge accounting and logistics, eliminating discrepancies among financial receipts, customer credit balances, and live warehouse inventory deductions.",
+        "decision": "I built and developed the end-to-end quotation and receipt system, engineering an integrated business logic that links invoices, receipts, and delivery orders directly to the general ledger for real-time transaction posting. I designed an intermediary credit ledger (Log) to document credit details and established an invoicing structure ready for regulatory compliance.",
+        "challenge": "Separating sensitive financial data from the logistics module while maintaining workflow cohesion; ensuring no delivery order is processed without automated stock validation, and preventing actual stock deduction until confirmed by the warehouse keeper.",
+        "result": "A fully integrated, production-stable operational lifecycle ensuring absolute automated synchronization between field operations and the accounting general ledger, coupled with flexible credit and warehouse management, and zero discrepancies in live balances."
+      },
+      "repvix": {
+        "tag": "SaaS · Applied AI · Customer Analytics",
+        "title": "Repvix — AI-Powered Customer Analytics Platform",
+        "period": "October 2025 – November 2025",
+        "liveUrl": "https://repvix.com",
+        "problem": "B2B enterprises were generating thousands of unanalyzed customer conversations across WhatsApp and Zendesk, missing critical signals for churn risks, team performance metrics, and behavioral insights.",
+        "decision": "Architected a real-time event pipeline using Convex and Node.js with a cost-optimized GPT-5 Mini integration. Built a custom Zendesk Sidebar app to embed real-time AI insights directly into workflows. Independently engineered the entire SaaS infrastructure (RBAC, billing, dashboards) in 6 weeks.",
+        "challenge": "Achieving highly accurate, real-time multilingual sentiment and intent analysis across Arabic, Turkish, and English simultaneously, factoring in unique cultural and linguistic nuances affecting behavioral interpretation.",
+        "result": "A live SaaS product (repvix.com) delivering multilingual AI analytics, automated churn risk detection, team performance evaluations, and executive dashboards. Built and shipped solo in 6 weeks."
+      }
+    },
+    "metricLabels": {
+      "entities": "Database Entities",
+      "modules": "Core Modules",
+      "active": "In Production",
+      "timeline": "Inception to Launch",
+      "languages": "Supported Languages",
+      "integrations": "System Integrations"
+    },
+    "otherProjects": {
+      "label": "Other Projects",
+      "statusCompleted": "Completed",
+      "statusCancelled": "Cancelled",
+      "isworb": {
+        "title": "isworb Platform for Corporate Classification",
+        "description": "A specialized platform for monitoring and categorizing commercial enterprises based on their economic relations and dealings with the occupying entity. Contributed to the project as a Full Stack Developer along with data auditing to ensure the accuracy and integrity of the classifications."
+      },
+      "danerdz": {
+        "title": "danerdz AI-Powered Educational Platform",
+        "description": "An AI-driven educational platform that processes and converts uploaded study materials and textbooks into automated flashcards and interactive quizzes, incorporating gamification elements like trophies and progress tracking."
+      },
+      "grandfather": {
+        "title": "Digital Archive & Memorial Website",
+        "description": "A dedicated digital archive and memorial platform engineered to aggregate all of his books, writings, and multimedia clips into a centralized repository. Developed as a continuous charity (Sadaqah Jariyah) for him and the family, with a strong emphasis on content architecture and seamless readability."
+      }
+    }
+  },
+  "techStack": {
+    "label": "Technical Arsenal",
+    "headline": "Tools I use to build",
+    "headlineAccent": "production systems.",
+    "groups": {
+      "frontend": {
+        "label": "Frontend Core",
+        "items": [
+          "Next.js 15",
+          "TypeScript",
+          "React",
+          "Node.js",
+          "Tailwind CSS 4.x",
+          "Framer Motion"
+        ]
+      },
+      "backend": {
+        "label": "Backend & APIs",
+        "items": [
+          "Convex",
+          "REST APIs",
+          "Supabase",
+          "Directus",
+          "Sanity (GROQ)",
+          "HTML5/CSS3"
+        ]
+      },
+      "databases": {
+        "label": "Data & Storage",
+        "items": ["MongoDB", "PostgreSQL", "Convex DB"]
+      },
+      "ai": {
+        "label": "AI & Intelligence",
+        "items": [
+          "GPT-5 Mini",
+          "LLM Prompt Engineering",
+          "Multilingual Processing",
+          "Cost-Optimized AI",
+          "OCR Systems"
+        ]
+      },
+      "devops": {
+        "label": "SaaS & Infrastructure",
+        "items": [
+          "Clerk (RBAC)",
+          "Lemon Squeezy",
+          "Zendesk Apps",
+          "Vercel",
+          "GitHub Actions",
+          "Virtual Machines (VMs)"
+        ]
+      }
+    }
+  },
+  "contact": {
+    "label": "Contact",
+    "heading": "Let's start a conversation.",
+    "paragraph": "Available for product engineering roles, long-term technical collaborations, and select consulting engagements. I typically respond within 24 hours.",
+    "email": "m7d.elborno@gmail.com",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "location": "Erzurum, Turkey"
+  },
+  "form": {
+    "name": "Full Name",
+    "email": "Email Address",
+    "subject": "Subject",
+    "budget": "Estimated Budget",
+    "message": "Message",
+    "submit": "Send Message",
+    "submitting": "Sending...",
+    "success": "Your message has been sent successfully. I will get back to you within 24 hours.",
+    "error": "An unexpected error occurred. Please try again or email me directly.",
+    "validation": {
+      "nameMin": "Name must be at least 2 characters",
+      "emailInvalid": "Please enter a valid email address",
+      "subjectRequired": "Subject is required",
+      "messageMin": "Message must be at least 20 characters long to clearly explain your request"
+    },
+    "budgetOptions": {
+      "under500": "Under $500",
+      "500to2000": "$500 to $2,000",
+      "2000to5000": "$2,000 to $5,000",
+      "over5000": "Over $5,000",
+      "discuss": "I'd prefer to discuss first"
+    }
+  },
+  "footer": {
+    "tagline": "Mohamed Elborno . Product-Focused Full Stack Engineer",
+    "copyright": "© {year} Mohamed Elborno | Developed using Next.js",
+    "email": "Email"
+  }
+}
