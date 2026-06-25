@@ -1,8 +1,11 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { ArrowUpRight } from "lucide-react";
+import { FooterCat } from "../ui/TransparentVideo";
+import { catVideoPlacement } from "@/lib/catVideo";
 
 const navLinks = [
   { href: "#about", key: "about" as const },
@@ -31,9 +34,13 @@ export function Footer() {
   const contact = useTranslations("contact");
   const locale = useLocale();
   const isRtl = locale === "ar";
+  const footerRef = useRef<HTMLElement>(null);
 
   return (
-    <footer className="relative z-10 mt-12 w-full min-w-0 border-t border-border-subtle bg-bg-primary sm:mt-16">
+    <footer
+      ref={footerRef}
+      className="relative z-10 w-full min-w-0 overflow-visible border-t border-border-subtle bg-bg-primary"
+    >
       <div className="mx-auto max-w-5xl px-6 py-12 sm:py-14">
         <div className="grid gap-10 md:grid-cols-2 md:items-start md:gap-12 lg:gap-16">
           <div className="relative flex max-w-sm flex-col gap-3 overflow-visible sm:gap-4">
@@ -105,6 +112,8 @@ export function Footer() {
           {t("copyright", { year: new Date().getFullYear() })}
         </p>
       </div>
+
+      <FooterCat {...catVideoPlacement} watchRef={footerRef} />
     </footer>
   );
 }
