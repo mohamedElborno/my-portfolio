@@ -12,10 +12,10 @@ export type FooterCatProps = {
 };
 
 export function FooterCat({
-  src = "/videos/tmpmei0flrf.webm",
+  src = "/videos/tmpmei0flrf1.webm",
   className,
-  width = 60,
-  height = 60,
+  width = 90,
+  height = 90,
   watchRef,
 }: FooterCatProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -71,15 +71,15 @@ export function FooterCat({
     >
       <video
         ref={videoRef}
+        key={src}
+        src={src}
         loop
         muted
         playsInline
-        preload="none"
+        preload="metadata"
         className="h-full w-full object-contain"
         aria-label="Waving cat"
-      >
-        <source src={src} type="video/webm" />
-      </video>
+      />
     </div>
   );
 }
