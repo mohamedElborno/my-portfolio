@@ -14,8 +14,8 @@ export type FooterCatProps = {
 export function FooterCat({
   src = "/videos/tmpmei0flrf1.webm",
   className,
-  width = 90,
-  height = 90,
+  width = 180,
+  height = 180,
   watchRef,
 }: FooterCatProps) {
   const containerRef = useRef<HTMLDivElement>(null);
