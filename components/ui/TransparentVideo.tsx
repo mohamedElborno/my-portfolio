@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useRef, type RefObject } from "react";
+import { useLayoutEffect, useRef, useState, type RefObject } from "react";
 import { cn } from "@/lib/utils";
 
 export type FooterCatProps = {
@@ -12,56 +12,30 @@ export type FooterCatProps = {
 };
 
 export function FooterCat({
-  src = "/videos/tmpmei0flrf1.webm",
+  src = "/videos/cat-waving.webp",
   className,
-  width = 180,
-  height = 180,
+  width = 360,
+  height = 360,
   watchRef,
 }: FooterCatProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const [visible, setVisible] = useState(false);
 
   useLayoutEffect(() => {
     const container = containerRef.current;
-    const video = videoRef.current;
-    if (!container || !video) return;
-
-    const play = async () => {
-      if (video.readyState < HTMLMediaElement.HAVE_CURRENT_DATA) {
-        video.load();
-        await new Promise<void>((resolve) => {
-          video.addEventListener("loadeddata", () => resolve(), { once: true });
-        });
-      }
-
-      try {
-        await video.play();
-      } catch {
-        // Autoplay blocked — ignore.
-      }
-    };
-
-    const pause = () => {
-      video.pause();
-    };
+    if (!container) return;
 
     const target = watchRef?.current ?? container;
 
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) void play();
-        else pause();
-      },
+      ([entry]) => setVisible(entry.isIntersecting),
       { threshold: 0.05, rootMargin: "120px 0px" },
     );
 
     observer.observe(target);
 
-    return () => {
-      observer.disconnect();
-      pause();
-    };
-  }, [src, width, height, watchRef]);
+    return () => observer.disconnect();
+  }, [watchRef]);
 
   return (
     <div
@@ -69,17 +43,17 @@ export function FooterCat({
       className={cn("pointer-events-none", className)}
       style={{ width, height }}
     >
-      <video
-        ref={videoRef}
-        key={src}
-        src={src}
-        loop
-        muted
-        playsInline
-        preload="metadata"
-        className="h-full w-full object-contain"
-        aria-label="Waving cat"
-      />
+      {visible ? (
+        <img
+          src={src}
+          alt=""
+          width={width}
+          height={height}
+          decoding="async"
+          className="h-full w-full object-contain"
+          aria-hidden
+        />
+      ) : null}
     </div>
   );
 }
