@@ -46,7 +46,7 @@
     "available": "Available for Work",
     "role": "Product-Focused Full Stack Engineer | Erzurum, Turkey",
     "quote": "The primary goal of software engineering is to build rigorous business logic that prevents data discrepancies and aligns perfectly with real-world operations.",
-    "p1": "Based in Erzurum, Turkey, my practical experience lies in building custom business operations solutions. This includes engineering sales and invoicing engines that handle millions of SAR in monthly transaction flows while automatically integrating them with accounting journals, alongside real-time AI processing pipelines operating across 7 different languages.",
+    "p1": "My practical experience lies in building custom business operations solutions. This includes engineering sales and invoicing engines that handle millions of SAR in monthly transaction flows while automatically integrating them with accounting journals, alongside real-time AI processing pipelines operating across 7 different languages.",
     "p2": "My expertise covers developing core ERP and supply chain modules, such as sales and procurement lifecycles, warehouse movement management, and building SaaS architectures. I take technical ownership of the product lifecycle from designing APIs and database schemas to frontend development and production deployment.",
     "p3": "Whether the challenge involves engineering intermediary credit ledgers to track balances and debit/credit movements with clear reference paths, or designing logistics workflows that handle stock validation and reservation prior to actual deduction; my ultimate goal is to bridge the gap between real business needs and deployed technical solutions."
   },
