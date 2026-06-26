@@ -255,5 +255,8 @@
     "tagline": "Mohamed Elborno . Product-Focused Full Stack Engineer",
     "copyright": "© {year} Mohamed Elborno | Developed using Next.js",
     "email": "Email"
+  },
+  "siteLoader": {
+    "label": "Loading"
   }
 }

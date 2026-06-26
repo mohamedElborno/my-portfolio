@@ -251,5 +251,8 @@
     "tagline": "Mohamed Elborno . Ürün Odaklı Full Stack Yazılım Mühendisi",
     "copyright": "© {year} Mohamed Elborno | Next.js ile geliştirilmiştir",
     "email": "E-posta"
+  },
+  "siteLoader": {
+    "label": "Yükleniyor"
   }
 }

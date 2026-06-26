@@ -8,6 +8,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { Providers } from "@/components/Providers";
 import { CursorGlow } from "@/components/ui/CursorGlow";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
+import { SiteLoader } from "@/components/ui/SiteLoader";
 import localFont from "next/font/local";
 
 const thmanyahSans = localFont({
@@ -121,6 +122,7 @@ export default async function LocaleLayout({
       <body className="flex min-h-dvh w-full flex-col overflow-x-clip bg-bg-primary text-text-primary">
         <Providers>
           <NextIntlClientProvider locale={locale} messages={messages}>
+            <SiteLoader />
             <div className="flex min-h-dvh w-full min-w-0 flex-col overflow-x-clip">
               <ScrollProgress />
               <CursorGlow />

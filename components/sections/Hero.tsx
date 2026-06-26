@@ -6,6 +6,7 @@ import { useTranslations, useLocale } from "next-intl";
 import { GridBackground } from "@/components/ui/GridBackground";
 import { staggerContainer, staggerItem, tapPress } from "@/lib/animations";
 import { cn } from "@/lib/utils";
+import { DowLoader } from "../ui/DowLoader";
 
 const HERO_ICONS = [
   { name: "Next.js", src: "/icons/Next.js.svg" },

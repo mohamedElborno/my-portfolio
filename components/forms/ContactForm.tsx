@@ -13,6 +13,7 @@ import { useRecaptcha } from "@/lib/useRecaptcha";
 import { ArrowRight } from "lucide-react";
 import { api } from "@/convex/_generated/api";
 import { FormInput, FormTextarea, FormSelect } from "@/components/ui/FormInput";
+import { DowLoader } from "@/components/ui/DowLoader";
 import { staggerItem, errorShake } from "@/lib/animations";
 import { cn } from "@/lib/utils";
 
@@ -165,15 +166,20 @@ export function ContactForm() {
   }
 
   return (
-    <motion.form
-      onSubmit={handleSubmit}
-      noValidate
-      className="space-y-5"
-      variants={reduce ? undefined : fieldContainer}
-      initial={reduce ? undefined : "hidden"}
-      whileInView={reduce ? undefined : "visible"}
-      viewport={{ once: true, margin: "-40px" }}
-    >
+    <div className="relative">
+      <motion.form
+        onSubmit={handleSubmit}
+        noValidate
+        className={cn(
+          "space-y-5 transition-[filter,opacity] duration-300",
+          status === "loading" && "pointer-events-none blur-[3px] opacity-60",
+        )}
+        variants={reduce ? undefined : fieldContainer}
+        initial={reduce ? undefined : "hidden"}
+        whileInView={reduce ? undefined : "visible"}
+        viewport={{ once: true, margin: "-40px" }}
+        aria-busy={status === "loading"}
+      >
       <div className="grid gap-5 sm:grid-cols-2">
         <Field shake={!!errors.name} reduce={!!reduce}>
           <div
@@ -245,36 +251,7 @@ export function ContactForm() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.2 }}
-                className="flex items-center gap-2"
               >
-                <motion.svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  className="will-change-transform"
-                  aria-hidden
-                >
-                  <motion.circle
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    initial={{ pathLength: 0, rotate: 0 }}
-                    animate={{ pathLength: 0.75, rotate: 360 }}
-                    transition={{
-                      pathLength: {
-                        duration: 1,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                      },
-                      rotate: { duration: 1, repeat: Infinity, ease: "linear" },
-                    }}
-                    style={{ transformOrigin: "center" }}
-                  />
-                </motion.svg>
                 {t("submitting")}
               </motion.span>
             ) : (
@@ -333,6 +310,27 @@ export function ContactForm() {
           ),
         })}
       </p>
-    </motion.form>
+      </motion.form>
+
+      <AnimatePresence>
+        {status === "loading" && (
+          <motion.div
+            key="form-loading-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center"
+            aria-hidden
+          >
+            <DowLoader
+              size={56}
+              label={t("submitting")}
+              className="text-text-primary"
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }
